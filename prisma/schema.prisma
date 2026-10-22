@@ -1,16 +1,30 @@
 generator client {
-  provider     = "prisma-client"
-  output       = "../src/generated/prisma"
+  provider = "prisma-client"
+  output   = "../src/prisma/generated"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
+//
+// Common
+//
+enum Locale {
+  EN
+  RU
+}
+
+//
+// Profile
+//
 model Profile {
-  id        String        @id @default(uuid())
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  locale    Locale
+  name      String
+  slug      String @unique
   headline  String
   summary   String
 }

@@ -18,7 +18,7 @@
       "orderLevel": 10,
     },
     {
-      "regex": "^(app/|generated/|prisma/|utils|api\\.)",
+      "regex": "^(app|prisma/|utils|api\\.)",
       "orderLevel": 40,
     },
     {
