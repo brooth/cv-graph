@@ -1,0 +1,29 @@
+{
+  //
+  // TS Import
+  "importSorter.generalConfiguration.sortOnBeforeSave": false,
+  "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 80,
+  "importSorter.importStringConfiguration.numberOfEmptyLinesAfterAllImports": 2,
+  "importSorter.importStringConfiguration.tabType": "tab",
+  "importSorter.importStringConfiguration.quoteMark": "double",
+  "importSorter.sortConfiguration.removeUnusedImports": true,
+  "importSorter.sortConfiguration.removeUnusedDefaultImports": true,
+  "importSorter.sortConfiguration.customOrderingRules.rules": [
+    {
+      "regex": "^/\\*",
+      "orderLevel": 0,
+    },
+    {
+      "regex": "^(zod|lodash|moment|moment-timezone|path|fs|process|os|v8|util|axios|crypto)$",
+      "orderLevel": 10,
+    },
+    {
+      "regex": "^(app/|generated/|prisma/|utils|api\\.)",
+      "orderLevel": 40,
+    },
+    {
+      "regex": "^[.]",
+      "orderLevel": 50
+    }
+  ],
+}
