@@ -1,5 +1,6 @@
 import { Locale } from "prisma/generated/enums";
 
+
 import type { ProfileSeed } from '../seed.types';
 
 
@@ -8,5 +9,5 @@ export const olegKhalidovRu: ProfileSeed = {
   locale: Locale.RU,
   name: 'Олег Халидов',
   headline: 'Senior Full-Stack Software Разработчик | Node.js, TypeScript, React, Flutter',
-  summary: '14 years at senior level across mobile, web and backend. 9 years as an independent contractor with 100% Job Success on Upwork and Freelancer.com. Currently focusing on solution architecture and cloud engineering, preparing for AWS Certified Solutions Architect – Associate.',
+  summary: '14 лет на уровне Senior: мобильная, веб- и бэкенд-разработка. 9 лет как независимый подрядчик (фриланс/контракты), 100% Job Success на Upwork и Freelancer.com. Сейчас развиваюсь в сторону архитектуры решений и облачной инженерии, готовлюсь к сертификации AWS Certified Solutions Architect – Associate.',
 }

@@ -24,9 +24,14 @@
     "db:seed": "tsx --env-file=.env src/prisma/seed/main.ts"
   },
   "dependencies": {
+    "@apollo/server": "^5.5.1",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.4.5",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "dataloader": "^2.2.3",
+    "lodash": "^4.18.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },
