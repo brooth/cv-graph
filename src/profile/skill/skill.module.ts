@@ -1,7 +1,7 @@
 import { Module, OnModuleInit } from "@nestjs/common";
 import { registerEnumType } from "@nestjs/graphql";
 
-import { SkillCategory } from "prisma/generated/enums";
+import { SkillCategory } from "generated/prisma/enums";
 import { SkillsService } from "profile/skill/skill.service";
 
 

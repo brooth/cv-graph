@@ -1,9 +1,9 @@
 import { Logger } from "@nestjs/common";
 import { PrismaPg } from "@prisma/adapter-pg";
 
-import { Prisma, PrismaClient } from "prisma/generated/client";
-import { ProfileSeed } from "prisma/seed/seed.types";
+import { Prisma, PrismaClient } from "generated/prisma/client";
 
+import { ProfileSeed } from "../seed/seed.types";
 import { allProfileSeeds } from "./data";
 
 

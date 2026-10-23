@@ -1,4 +1,4 @@
-import { Locale } from "prisma/generated/enums";
+import { Locale } from "generated/prisma/enums";
 
 import { email, links, skills } from "./oleg-khalidov-shared";
 

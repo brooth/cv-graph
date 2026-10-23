@@ -2,7 +2,7 @@ import _ from "lodash";
 
 import { Injectable } from "@nestjs/common";
 
-import { Project } from "prisma/generated/client";
+import { Project } from "generated/prisma/client";
 import { PrismaService } from "prisma/prisma.service";
 
 

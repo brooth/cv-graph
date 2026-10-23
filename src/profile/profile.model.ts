@@ -1,6 +1,6 @@
 import { ArgsType, Field, ID, ObjectType } from "@nestjs/graphql";
 
-import { Locale } from "prisma/generated/enums";
+import { Locale } from "generated/prisma/enums";
 
 
 @ObjectType()

@@ -18,7 +18,7 @@
       "orderLevel": 10,
     },
     {
-      "regex": "^(app|graphql/|skills/|experience/|projects/|prisma/|profile/|utils|api\\.)",
+      "regex": "^(app|generated/prisma/|graphql/|skills/|experience/|projects/|prisma/|profile/|utils|api\\.)",
       "orderLevel": 40,
     },
     {

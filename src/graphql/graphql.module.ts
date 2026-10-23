@@ -2,7 +2,7 @@ import { Module, OnModuleInit } from "@nestjs/common";
 import { registerEnumType } from "@nestjs/graphql";
 
 import { GraphQlLoadersModule } from "graphql/loaders/loaders.module";
-import { Locale } from "prisma/generated/enums";
+import { Locale } from "generated/prisma/enums";
 
 
 @Module({

@@ -1,4 +1,4 @@
-import { SkillCategory } from "prisma/generated/enums";
+import { SkillCategory } from "generated/prisma/enums";
 import { ProfileSeed } from "prisma/seed/seed.types";
 
 

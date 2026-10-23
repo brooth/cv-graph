@@ -1,4 +1,4 @@
-import type { Locale, SkillCategory } from '../generated/enums';
+import type { Locale, SkillCategory } from 'generated/prisma/enums';
 
 export interface ProfileSeed {
   locale: Locale;

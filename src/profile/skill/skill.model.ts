@@ -1,6 +1,6 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 
-import { SkillCategory } from "prisma/generated/enums";
+import { SkillCategory } from "generated/prisma/enums";
 
 
 @ObjectType()
