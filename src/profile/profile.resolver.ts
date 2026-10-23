@@ -1,14 +1,24 @@
-import { Args, Query, Resolver } from "@nestjs/graphql";
+import {
+	Args, Context, Parent, Query, ResolveField, Resolver
+} from "@nestjs/graphql";
 
-import { Profile, ProfileArgs } from "profile/profile.model";
+import { Experience } from "profile/experience/experience.model";
+import { ExperienceService } from "profile/experience/experience.service";
+import { Profile, ProfileArgs, ProfileLink } from "profile/profile.model";
+import { Project } from "profile/project/project.model";
+import { Skill } from "profile/skill/skill.model";
 
 import { ProfileService } from "./profile.service";
+
+
+import type { GraphQlLoaders } from "graphql/loaders/loaders.types";
 
 
 @Resolver(() => Profile)
 export class ProfileResolver {
   constructor(
     private readonly profileService: ProfileService,
+    private readonly experienceService: ExperienceService,
   ) { }
 
   @Query(() => Profile)
@@ -19,5 +29,25 @@ export class ProfileResolver {
   @Query(() => [Profile])
   profiles(): Promise<Profile[]> {
     return this.profileService.findAll();
+  }
+
+  @ResolveField(() => [ProfileLink])
+  links(@Parent() profile: Profile, @Context('loaders') loaders: GraphQlLoaders): Promise<ProfileLink[]> {
+    return loaders.links.load(profile.id);
+  }
+
+  @ResolveField(() => [Skill])
+  skills(@Parent() profile: Profile, @Context('loaders') loaders: GraphQlLoaders): Promise<Skill[]> {
+    return loaders.skills.load(profile.id);
+  }
+
+  @ResolveField(() => [Experience])
+  experience(@Parent() profile: Profile, @Context('loaders') loaders: GraphQlLoaders): Promise<Experience[]> {
+    return loaders.experience.load(profile.id);
+  }
+
+  @ResolveField(() => [Project])
+  projects(@Parent() profile: Profile, @Context('loaders') loaders: GraphQlLoaders): Promise<Project[]> {
+    return loaders.projects.load(profile.id);
   }
 }

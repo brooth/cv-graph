@@ -7,6 +7,17 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Experience {
+  bulletpoints: [String!]!
+  company: String!
+  endDate: DateTime
+  id: ID!
+  location: String
+  stack: [String!]!
+  startDate: DateTime!
+  title: String!
+}
+
 enum Locale {
   EN
   RU
@@ -14,21 +25,56 @@ enum Locale {
 
 type Profile {
   createdAt: DateTime!
+  email: String!
+  experience: [Experience!]!
   headline: String!
   id: ID!
+  links: [ProfileLink!]!
   locale: Locale!
+  location: String!
   name: String!
+  projects: [Project!]!
+  skills: [Skill!]!
   slug: String!
   summary: String!
   updatedAt: DateTime!
 }
 
+type ProfileLink {
+  label: String!
+  url: String!
+}
+
+type Project {
+  description: String!
+  name: String!
+  repositoryUrl: String
+  stack: [String!]!
+  url: String
+}
+
 type Query {
   profile(
     """
-    Profile slug, e.g. oleg-khalidov-ru. oleg-khalidov-en is used by default
+    Profile slug, e.g. oleg-khalidov-ru. The default profile is used when omitted
     """
     slug: String
   ): Profile!
   profiles: [Profile!]!
+}
+
+type Skill {
+  category: SkillCategory!
+  name: String!
+}
+
+enum SkillCategory {
+  AI
+  BACKEND
+  CLOUD
+  DATABASE
+  FRONTEND
+  INTEGRATION
+  LANGUAGE
+  MOBILE
 }

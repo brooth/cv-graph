@@ -18,6 +18,12 @@ export class Profile {
   locale!: Locale;
 
   @Field()
+  location!: string;
+
+  @Field()
+  email!: string;
+
+  @Field()
   slug!: string;
 
   @Field()
@@ -30,8 +36,17 @@ export class Profile {
   summary!: string;
 }
 
+@ObjectType()
+export class ProfileLink {
+  @Field()
+  label!: string;
+
+  @Field()
+  url!: string;
+}
+
 @ArgsType()
 export class ProfileArgs {
-  @Field({ nullable: true, description: 'Profile slug, e.g. oleg-khalidov-ru. oleg-khalidov-en is used by default' })
+  @Field({ nullable: true, description: 'Profile slug, e.g. oleg-khalidov-ru. The default profile is used when omitted' })
   slug?: string;
 }

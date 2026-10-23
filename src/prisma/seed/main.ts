@@ -1,7 +1,8 @@
 import { Logger } from "@nestjs/common";
 import { PrismaPg } from "@prisma/adapter-pg";
 
-import { PrismaClient } from "prisma/generated/client";
+import { Prisma, PrismaClient } from "prisma/generated/client";
+import { ProfileSeed } from "prisma/seed/seed.types";
 
 import { allProfileSeeds } from "./data";
 
@@ -16,7 +17,7 @@ async function main() {
     await prisma.$transaction(async (tx) => {
       for (const profile of allProfileSeeds) {
         await tx.profile.deleteMany({ where: { slug: profile.slug } });
-        await tx.profile.create({ data: profile });
+        await tx.profile.create({ data: toProfileCreateInput(profile) });
       }
     });
     Logger.log(`Seeded profiles: ${allProfileSeeds.map((profile) => profile.slug).join(', ')}`);
@@ -30,3 +31,27 @@ main().catch((error: unknown) => {
   Logger.error(error);
   process.exit(1);
 });
+
+function toProfileCreateInput({ links, skills, experiences, projects, ...profile }: ProfileSeed): Prisma.ProfileCreateInput {
+  return {
+    ...profile,
+    links: {
+      create: links.map((link, position) => ({ ...link, position })),
+    },
+    skills: {
+      create: skills
+        .flatMap(({ category, names }) => names.map((name) => ({ name, category })))
+        .map((skill, position) => ({ ...skill, position })),
+    },
+    experiences: {
+      create: experiences.map(({ startDate, endDate, ...experience }) => ({
+        ...experience,
+        startDate: new Date(startDate),
+        endDate: endDate ? new Date(endDate) : null,
+      })),
+    },
+    projects: {
+      create: projects.map((project, position) => ({ ...project, position })),
+    },
+  };
+}
