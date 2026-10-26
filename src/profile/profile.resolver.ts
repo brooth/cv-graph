@@ -3,7 +3,6 @@ import {
 } from "@nestjs/graphql";
 
 import { Experience } from "profile/experience/experience.model";
-import { ExperienceService } from "profile/experience/experience.service";
 import { Profile, ProfileArgs, ProfileLink } from "profile/profile.model";
 import { Project } from "profile/project/project.model";
 import { Skill } from "profile/skill/skill.model";
@@ -18,7 +17,6 @@ import type { GraphQlLoaders } from "graphql/loaders/loaders.types";
 export class ProfileResolver {
   constructor(
     private readonly profileService: ProfileService,
-    private readonly experienceService: ExperienceService,
   ) { }
 
   @Query(() => Profile)
