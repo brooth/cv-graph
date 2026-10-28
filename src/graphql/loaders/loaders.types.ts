@@ -13,7 +13,3 @@ export interface GraphQlLoaders {
   experience: DataLoader<string, Experience[]>;
   projects: DataLoader<string, Project[]>;
 }
-
-export interface GraphqlContext {
-  loaders: GraphQlLoaders;
-}
