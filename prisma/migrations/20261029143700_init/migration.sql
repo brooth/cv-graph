@@ -59,7 +59,6 @@ CREATE TABLE "Experience" (
     "endDate" DATE,
     "bulletpoints" TEXT[],
     "stack" TEXT[],
-    "profileLinkId" TEXT,
 
     CONSTRAINT "Experience_pkey" PRIMARY KEY ("id")
 );
@@ -76,7 +75,6 @@ CREATE TABLE "Project" (
     "repositoryUrl" TEXT,
     "stack" TEXT[],
     "position" INTEGER NOT NULL,
-    "profileLinkId" TEXT,
 
     CONSTRAINT "Project_pkey" PRIMARY KEY ("id")
 );
@@ -109,10 +107,4 @@ ALTER TABLE "Skill" ADD CONSTRAINT "Skill_profileId_fkey" FOREIGN KEY ("profileI
 ALTER TABLE "Experience" ADD CONSTRAINT "Experience_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Experience" ADD CONSTRAINT "Experience_profileLinkId_fkey" FOREIGN KEY ("profileLinkId") REFERENCES "ProfileLink"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Project" ADD CONSTRAINT "Project_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Project" ADD CONSTRAINT "Project_profileLinkId_fkey" FOREIGN KEY ("profileLinkId") REFERENCES "ProfileLink"("id") ON DELETE SET NULL ON UPDATE CASCADE;

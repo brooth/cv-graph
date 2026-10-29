@@ -44,8 +44,6 @@ model ProfileLink {
   url         String
   position    Int
   profile     Profile      @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  projects    Project[]
-  experiences Experience[]
 
   @@index([profileId, position])
 }
@@ -94,8 +92,6 @@ model Experience {
   bulletpoints  String[]
   stack         String[]
   profile       Profile      @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileLink   ProfileLink? @relation(fields: [profileLinkId], references: [id])
-  profileLinkId String?
 
   @@index([profileId, startDate])
 }
@@ -115,8 +111,6 @@ model Project {
   stack         String[]
   position      Int
   profile       Profile      @relation(fields: [profileId], references: [id], onDelete: Cascade)
-  profileLink   ProfileLink? @relation(fields: [profileLinkId], references: [id])
-  profileLinkId String?
 
   @@index([profileId, position])
 }
